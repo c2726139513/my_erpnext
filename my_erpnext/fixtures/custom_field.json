@@ -1,0 +1,33 @@
+[
+ {
+  "doctype": "Custom Field",
+  "dt": "POS Invoice Item",
+  "fieldname": "custom_length",
+  "fieldtype": "Data",
+  "insert_after": "quantity_and_rate",
+  "label": "length",
+  "modified": "2023-10-11 12:36:10.593354",
+  "name": "POS Invoice Item-custom_length"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "POS Invoice Item",
+  "fieldname": "custom_width",
+  "fieldtype": "Data",
+  "insert_after": "custom_length",
+  "label": "width",
+  "modified": "2023-10-11 12:37:10.593354",
+  "name": "POS Invoice Item-custom_width"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "POS Invoice Item",
+  "default": "Today",
+  "fieldname": "custom_create_date",
+  "fieldtype": "Date",
+  "insert_after": "qty",
+  "label": "create_date",
+  "modified": "2023-10-11 13:54:07.184498",
+  "name": "POS Invoice Item-custom_create_date"
+ }
+]

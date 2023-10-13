@@ -12,6 +12,7 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/my_erpnext/css/my_erpnext.css"
 # app_include_js = "/assets/my_erpnext/js/my_erpnext.js"
+app_include_js = "my_erpnext.bundle.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/my_erpnext/css/my_erpnext.css"
@@ -25,7 +26,7 @@ app_license = "mit"
 # webform_include_css = {"doctype": "public/css/doctype.css"}
 
 # include js in page
-# page_js = {"page" : "public/js/file.js"}
+page_js = {"point-of-sale" : "public/js/point-of-sale.js"}
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
