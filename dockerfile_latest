@@ -8,7 +8,7 @@ USER frappe
 RUN cd /home/frappe/frappe-bench \
         && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
         && bench get-app https://gitee.com/yuzelin/erpnext_chinese.git \
-        && bench get-app --branch version-14 https://gitee.com/yuzelin/erpnext_oob.git \
+        && bench get-app --branch version-15 https://gitee.com/yuzelin/erpnext_oob.git \
         && bench get-app payments \
         && bench get-app hrms \
         && bench get-app print_designer \
