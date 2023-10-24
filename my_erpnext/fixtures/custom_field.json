@@ -38,7 +38,7 @@
   "insert_after": "custom_create_date",
   "label": "note",
   "modified": "2023-10-24 00:48:52.637012",
-  "name": "POS Invoice Item-custom_note",
+  "name": "POS Invoice Item-custom_note"
  },
  {
   "doctype": "Custom Field",
@@ -48,6 +48,6 @@
   "insert_after": "select_print_heading",
   "label": "print_status",
   "modified": "2023-10-23 23:22:20.721646",
-  "name": "POS Invoice-custom_print_status",
+  "name": "POS Invoice-custom_print_status"
   }
 ]
