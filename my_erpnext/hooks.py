@@ -29,7 +29,7 @@ app_include_js = "my_erpnext.bundle.js"
 page_js = {"point-of-sale" : "public/js/point-of-sale.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"POS Invoice" : "public/js/pos-invoice.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}

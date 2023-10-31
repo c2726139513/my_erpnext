@@ -95,7 +95,7 @@ const MyPOSController = class extends erpnext.PointOfSale.Controller {
 
                 this.page.add_inner_button(__('Save And Print'), this.save_and_print.bind(this));
                 this.page.add_inner_button(__('Save Only'), this.save_only.bind(this));
-                this.page.set_primary_action(__('Save And New'), this.save_draft_invoice.bind(this), 'octicon octicon-plus');
+                this.page.set_primary_action(__('Save And New'), this.save_draft_invoice.bind(this), 'add');
         }
 
         save_() {
