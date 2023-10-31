@@ -2,9 +2,19 @@
  {
   "doctype": "Custom Field",
   "dt": "POS Invoice Item",
+  "fieldname": "custom_need_calc_square",
+  "fieldtype": "Check",
+  "insert_after": "quantity_and_rate",
+  "label": "need_calc_square",
+  "modified": "2023-11-01 00:04:41.572382",
+  "name": "POS Invoice Item-custom_need_calc_square"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "POS Invoice Item",
   "fieldname": "custom_length",
   "fieldtype": "Data",
-  "insert_after": "quantity_and_rate",
+  "insert_after": "custom_need_calc_square",
   "label": "length",
   "modified": "2023-10-11 12:36:10.593354",
   "name": "POS Invoice Item-custom_length"

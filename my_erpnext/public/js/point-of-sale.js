@@ -2,7 +2,13 @@ frappe.require('point-of-sale.bundle.js', function() {
 const MyItemDetails = class extends erpnext.PointOfSale.ItemDetails {
 	get_form_fields(item) {
 		//const fields = [ 'custom_length', 'custom_width', 'qty', 'uom', 'custom_note', 'rate', 'conversion_factor', 'discount_percentage', 'warehouse', 'actual_qty', 'price_list_rate'];
-		const fields = [ 'custom_length', 'custom_width', 'qty', 'uom', 'rate', 'discount_percentage', 'custom_note', 'custom_create_date'];
+		const fields = [ 'uom', 'rate', 'discount_percentage', 'custom_create_date', 'custom_note'];
+		if (item.custom_need_calc_square === 1) {
+			fields.unshift('custom_width');
+			fields.unshift('custom_length');
+		} else {
+			fields.unshift('qty');
+		}
 		if (item.has_serial_no) fields.push('serial_no');
 		if (item.has_batch_no) fields.push('batch_no');
 		return fields;
