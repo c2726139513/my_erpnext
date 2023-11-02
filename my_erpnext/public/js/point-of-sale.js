@@ -99,7 +99,7 @@ const MyPOSController = class extends erpnext.PointOfSale.Controller {
 
                 this.page.add_menu_item(__('Close the POS'), this.close_pos.bind(this), false, 'Shift+Ctrl+C');
 
-                this.page.add_inner_button(__('Save And Print'), this.save_and_print.bind(this));
+                this.page.set_secondary_action(__('Save And Print'), this.save_and_print.bind(this), 'printer');
                 this.page.add_inner_button(__('Save Only'), this.save_only.bind(this));
                 this.page.set_primary_action(__('Save And New'), this.save_draft_invoice.bind(this), 'add');
         }
@@ -126,13 +126,43 @@ const MyPOSController = class extends erpnext.PointOfSale.Controller {
         }
 
 	print_() {
-                frappe.utils.print(
+                //frappe.utils.print(
+		this._print(
                         this.frm.doc.doctype,
                         this.frm.doc.name,
                         this.frm.pos_print_format,
                         this.frm.doc.letter_head,
                         this.frm.doc.language || frappe.boot.lang
                 );
+	}
+
+	_print(doctype, docname, print_format, letterhead, lang_code) {
+		let w = window.open(
+			frappe.urllib.get_full_url(
+				"/api/method/frappe.utils.print_format.download_pdf?doctype=" +
+					encodeURIComponent(doctype) +
+					"&name=" +
+					encodeURIComponent(docname) +
+					"&trigger_print=1" +
+					"&format=" +
+					encodeURIComponent(print_format) +
+					"&no_letterhead=" +
+					(letterhead ? "0" : "1") +
+					"&letterhead=" +
+					encodeURIComponent(letterhead) +
+					(lang_code ? "&_lang=" + lang_code : "")
+			)
+		);
+
+		if (!w) {
+			frappe.msgprint(__("Please enable pop-ups"));
+			return;
+		}
+		w.onload = function() {
+			w.print();
+		//	PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+		//	printManager.print("print", w, null);
+		}
 	}
 
 
