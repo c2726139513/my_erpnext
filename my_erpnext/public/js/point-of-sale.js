@@ -345,10 +345,16 @@ const MyPOSController = class extends erpnext.PointOfSale.Controller {
 	}
 
 
-        save_only() {
+        /*save_only() {
                 this.save_().then(() => {
                         this.frm.set_value('custom_print_status', 'unprinted').then(() => this.frm.save());
                 });
+        }*/
+        save_only() {
+		if(this.frm.is_dirty()) {
+                        this.frm.set_value('custom_print_status', 'unprinted');
+                }
+		this.save_();
         }
 
         save_and_print() {
@@ -364,7 +370,7 @@ const MyPOSController = class extends erpnext.PointOfSale.Controller {
                 });
         }
 
-	save_draft_invoice() {
+	/*save_draft_invoice() {
                 this.save_().then(() => {
                         this.frm.set_value('custom_print_status', 'unprinted').then(() => this.frm.save()).then(() => {
                         	frappe.run_serially([
@@ -373,6 +379,18 @@ const MyPOSController = class extends erpnext.PointOfSale.Controller {
                         	        () => frappe.dom.unfreeze(),
                         	]);
                 	});
+		});
+        }*/
+	save_draft_invoice() {
+		if(this.frm.is_dirty()) {
+                        this.frm.set_value('custom_print_status', 'unprinted');
+                }
+		this.save_().then(() => {
+                        frappe.run_serially([
+                        	() => frappe.dom.freeze(),
+                        	() => this.make_new_invoice(),
+                        	() => frappe.dom.unfreeze(),
+                        ]);
 		});
         }
 };
