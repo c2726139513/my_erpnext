@@ -1,4 +1,4 @@
-FROM frappe/erpnext:v15.0.0
+#FROM frappe/erpnext:v15.0.0
 USER root
 RUN     sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources \
         && apt-get update \

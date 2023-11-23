@@ -8,6 +8,10 @@ on:
         description: 'Registry URL'
         required: true
         default: ''
+      version:
+        description: 'Erpnext Version'
+        required: true
+        default: ''
 
 jobs:
   build:
@@ -26,5 +30,6 @@ jobs:
     - name: build
       run: |
         cd $GITHUB_WORKSPACE
+        sed -i '1i FROM frappe/erpnext:${{ github.event.inputs.version }}' dockerfile
         docker build -t ${{ github.event.inputs.url }}/erpnext:my .
         docker push ${{ github.event.inputs.url }}/erpnext:my
