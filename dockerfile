@@ -10,6 +10,7 @@ RUN cd /home/frappe/frappe-bench \
         && bench get-app https://gitee.com/yuzelin/erpnext_chinese.git \
         && bench get-app --branch version-15 https://gitee.com/yuzelin/erpnext_oob.git \
         && bench get-app payments \
+        && bench set-config -gp socketio_port 9000 \
         && bench get-app --branch version-15 hrms \
         && bench get-app print_designer \
         && bench get-app https://github.com/c2726139513/my_erpnext
