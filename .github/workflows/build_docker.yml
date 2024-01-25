@@ -4,10 +4,6 @@ on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
-      url:
-        description: 'Registry URL'
-        required: true
-        default: ''
       version:
         description: 'Erpnext Version'
         required: true
@@ -21,15 +17,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Initialize
-      run: |
-        sudo -E apt-get -qq update
-        sudo -E apt-get -qq install docker
-        sudo -E systemctl start docker
-
     - name: build
+      env:
+        REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
+        REGISTRY_PASSWD: ${{ secrets.REGISTRY_PASSWD }}
+        REGISTRY_URL: ${{ secrets.REGISTRY_URL }}
       run: |
         cd $GITHUB_WORKSPACE
         sed -i '1i FROM frappe/erpnext:${{ github.event.inputs.version }}' dockerfile
-        docker build -t ${{ github.event.inputs.url }}/erpnext:my .
-        docker push ${{ github.event.inputs.url }}/erpnext:my
+        docker login -u $REGISTRY_USER -p $REGISTRY_PASSWD registry.cn-hangzhou.aliyuncs.com
+        docker build -t $REGISTRY_URL/erpnext:${{ github.event.inputs.version }}_my .
+        docker push $REGISTRY_URL/erpnext:${{ github.event.inputs.version }}_my
+        rm -rf ~/.docker
