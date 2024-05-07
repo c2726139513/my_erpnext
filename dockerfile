@@ -14,4 +14,4 @@ RUN cd /home/frappe/frappe-bench \
         && bench get-app --branch version-15 hrms \
         && bench get-app print_designer \
         && bench get-app https://github.com/c2726139513/my_erpnext \
-        && bench get-app https://gitee.com/yuzelin/zelin_ac
+        && bench get-app https://github.com/c2726139513/zelin_ac
