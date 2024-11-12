@@ -25,7 +25,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         sed -i '1i FROM frappe/erpnext:${{ github.event.inputs.version }}' dockerfile
-        sed -i 's|https://github.com/c2726139513/zelin_ac|https://oauth2:${{ secrets.GH_TOKEN }}@github.com/c2726139513/zelin_ac|g' dockerfile
+        #sed -i 's|https://github.com/c2726139513/zelin_ac|https://oauth2:${{ secrets.GH_TOKEN }}@github.com/c2726139513/zelin_ac|g' dockerfile
         docker login -u $REGISTRY_USER -p $REGISTRY_PASSWD registry.cn-hangzhou.aliyuncs.com
         docker build -t $REGISTRY_URL/erpnext:${{ github.event.inputs.version }}_my .
         docker push $REGISTRY_URL/erpnext:${{ github.event.inputs.version }}_my
